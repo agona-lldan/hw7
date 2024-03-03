@@ -1,16 +1,6 @@
 import { createSlice } from "@reduxjs/toolkit";
 import getRandomString from "@/utils/getRandomString";
-
-type taskStateType = {
-  [key: string]: taskType;
-};
-
-type taskType = {
-  done: boolean;
-  value: string;
-  color: number;
-  date: number;
-};
+import { taskStateType } from "@/types/task";
 
 const initialState: taskStateType = {};
 
@@ -22,8 +12,14 @@ export const taskSlice = createSlice({
       const key = getRandomString(Object.keys(state));
       state[key] = action.payload;
     },
+    status: (state, action) => {
+      state[action.payload].done = !state[action.payload].done;
+    },
+    remove: (state, action) => {
+      delete state[action.payload];
+    },
   },
 });
 
-export const { add } = taskSlice.actions;
+export const { add, status, remove } = taskSlice.actions;
 export default taskSlice.reducer;

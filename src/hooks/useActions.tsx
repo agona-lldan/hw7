@@ -1,5 +1,5 @@
 import { useDispatch } from "react-redux";
-import { add } from "@/redux/taskSlice";
+import { add, remove, status } from "@/redux/taskSlice";
 
 export default function useActions() {
   const dispatch = useDispatch();
@@ -16,5 +16,13 @@ export default function useActions() {
     );
   };
 
-  return { addTasks };
+  const statusTasks = (key: string) => {
+    dispatch(status(key));
+  };
+
+  const removeTasks = (key: string) => {
+    dispatch(remove(key));
+  };
+
+  return { addTasks, statusTasks, removeTasks };
 }
