@@ -1,6 +1,7 @@
 import { createSlice } from "@reduxjs/toolkit";
 import getRandomString from "@/utils/getRandomString";
 import { taskStateType } from "@/types/task";
+import { v4 as uuidv4 } from "uuid";
 
 const initialState: taskStateType = {};
 
@@ -9,7 +10,7 @@ export const taskSlice = createSlice({
   initialState,
   reducers: {
     add: (state, action) => {
-      const key = getRandomString(Object.keys(state));
+      const key = uuidv4();
       state[key] = action.payload;
     },
     status: (state, action) => {

@@ -4,18 +4,16 @@ import { taskType } from "@/types/task";
 import getFormattedDate from "@/utils/getFormattedDate";
 import { colors } from "@/constants/colors";
 import { Check, Trash, X } from "lucide-react";
-import useActions from "@/hooks/useActions";
 
-export default function Task({ item }: { item: [string, taskType] }) {
-  const { statusTasks, removeTasks } = useActions();
-  const handleStatus = (key: string) => {
-    statusTasks(key);
-  };
-
-  const handleRemove = (key: string) => {
-    removeTasks(key);
-  };
-
+export default function Task({
+  item,
+  handleStatus,
+  handleRemove,
+}: {
+  item: [string, taskType];
+  handleStatus: (key: string) => void;
+  handleRemove: (key: string) => void;
+}) {
   return (
     <div
       className={styles.wrapper}
