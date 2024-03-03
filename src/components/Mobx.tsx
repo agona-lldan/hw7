@@ -1,8 +1,8 @@
 import React from "react";
 import { observer } from "mobx-react-lite";
 import Input from "@/components/Input/Input";
-import TaskList from "@/components/TaskList/TaskList";
 import { useStore } from "@/providers/MobxProvider";
+import { TaskListMobx } from "@/components/TaskList/TaskListMobx";
 
 export const Mobx = observer(() => {
   const store = useStore();
@@ -25,7 +25,7 @@ export const Mobx = observer(() => {
   return (
     <>
       <Input handleAdd={handleAdd} />
-      <TaskList
+      <TaskListMobx
         tasks={store.tasks}
         handleStatus={handleStatus}
         handleRemove={handleRemove}

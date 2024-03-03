@@ -1,5 +1,4 @@
 import { createSlice } from "@reduxjs/toolkit";
-import getRandomString from "@/utils/getRandomString";
 import { taskStateType } from "@/types/task";
 import { v4 as uuidv4 } from "uuid";
 

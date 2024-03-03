@@ -7,10 +7,8 @@ export class Store {
     makeAutoObservable(this);
   }
   add(task: taskType) {
-    console.log(task);
     const key = uuidv4();
     this.tasks[key] = task;
-    console.log(this.tasks);
   }
 
   status(key: string) {
